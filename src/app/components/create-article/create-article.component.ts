@@ -14,7 +14,14 @@ export class CreateArticleComponent implements OnInit {
     config: AngularEditorConfig = {
         editable: true,
         spellcheck: false,
-        height: '40rem',
+        height: '25rem',
+        minHeight: '25rem',
+        maxHeight: '25rem',
+        placeholder: 'Type your article here...',
+        toolbarHiddenButtons: [[
+            'insertImage',
+            'insertVideo'
+        ]]
     };
 
     constructor() { }
