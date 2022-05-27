@@ -11,6 +11,8 @@ import { HomeComponent } from './components/home/home.component';
 import { CreateArticleComponent } from './components/create-article/create-article.component';
 import { HeaderComponent } from './components/header/header.component';
 
+import { ArticleService } from './services/article.service';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -25,7 +27,9 @@ import { HeaderComponent } from './components/header/header.component';
         FormsModule,
         HttpClientModule
     ],
-    providers: [],
+    providers: [
+        ArticleService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
