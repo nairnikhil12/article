@@ -17,10 +17,7 @@ db.sequelize.sync({ force: true }).then(() => {
     console.log('Drop and re-sync db.');
 });
 
-app.get('/', (req, res) => {
-    res.json({ message: 'Hello, World!'})
-});
-
+require('./routes/auth.route')(app);
 require('./routes/article.route')(app);
 
 const PORT = process.env.port || 8081;
