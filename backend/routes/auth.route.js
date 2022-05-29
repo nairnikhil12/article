@@ -10,6 +10,6 @@ module.exports = (app) => {
         next();
     });
 
-    app.post('/api/auth/register', [verifyRegister.checkDuplicateUsername], controller.register);
-    app.post('/api/auth/login', controller.login);
+    app.post('/api/v1/auth/register', [verifyRegister.checkDuplicateUsername], controller.register);
+    app.post('/api/v1/auth/login', controller.login);
 };

@@ -10,15 +10,20 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { CreateArticleComponent } from './components/create-article/create-article.component';
 import { HeaderComponent } from './components/header/header.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 import { ArticleService } from './services/article.service';
+import { RegisterService } from './services/register.service';
 
 @NgModule({
     declarations: [
         AppComponent,
         HomeComponent,
         CreateArticleComponent,
-        HeaderComponent
+        HeaderComponent,
+        RegisterComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
@@ -28,7 +33,8 @@ import { ArticleService } from './services/article.service';
         HttpClientModule
     ],
     providers: [
-        ArticleService
+        ArticleService,
+        RegisterService
     ],
     bootstrap: [AppComponent]
 })

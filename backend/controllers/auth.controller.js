@@ -21,7 +21,7 @@ exports.register = (req, res) => {
 };
 
 exports.login = (req, res) => {
-    User.findone({
+    User.findOne({
         where: {
             'username': req.body.username
         }
@@ -40,7 +40,7 @@ exports.login = (req, res) => {
             })
         }
 
-        let token = jwt.sign({ id: userId }, config.secret, { expiresIn: 864000 })
+        let token = jwt.sign({ id: user.id }, config.secret, { expiresIn: 864000 })
 
         res.status(200).send({
             id: user.id,

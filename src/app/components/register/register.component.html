@@ -1,0 +1,23 @@
+<div class="mt-5 w-25 p-4 container border border-3 rounded-3">
+    <div class="mb-3">
+        <label class="form-label">First Name</label>
+        <input [(ngModel)]="firstname" placeholder="First Name" type="text" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Last Name</label>
+        <input [(ngModel)]="lastname" placeholder="Last Name" type="text" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input [(ngModel)]="username" placeholder="Username" type="text" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input [(ngModel)]="password" placeholder="Password" type="password" class="form-control">
+    </div>
+
+    <button (click)="onRegister()" type="submit" class="mt-2 btn btn-primary">Register</button>
+</div>

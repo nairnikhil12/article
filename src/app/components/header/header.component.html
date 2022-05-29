@@ -1,8 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
-    <a class="navbar-brand " href="#">Article</a>
+    <a class="ms-3 navbar-brand " href="#">Article</a>
 
     <div class="container justify-content-end">
-        <button type="button" class="col-lg-1 btn btn-primary me-3">Register</button>
-        <button type="button" class="col-lg-1 btn btn-danger">Login</button>
+        <a routerLink="/register" class="col-lg-1">
+            <button type="button" class="btn btn-primary me-3">Register</button>
+        </a>
+        <a routerLink="/login" class="col-lg-1">
+            <button type="button" class="btn btn-danger">Login</button>
+        </a>
     </div>
 </nav>
