@@ -15,6 +15,7 @@ import { LoginComponent } from './components/login/login.component';
 
 import { ArticleService } from './services/article.service';
 import { RegisterService } from './services/register.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
     declarations: [
@@ -34,7 +35,8 @@ import { RegisterService } from './services/register.service';
     ],
     providers: [
         ArticleService,
-        RegisterService
+        RegisterService,
+        AuthService
     ],
     bootstrap: [AppComponent]
 })

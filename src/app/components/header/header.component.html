@@ -1,12 +1,26 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
     <a class="ms-3 navbar-brand " href="#">Article</a>
 
-    <div class="container justify-content-end">
+    <button class="btn btn-outline-primary" type="button" id="button-addon1">
+        <span class="bi bi-search"></span>
+    </button>
+    <input type="text" class="form-control" placeholder="Search...">
+
+    <div *ngIf="this.authService.isLoggedOut()" class="container justify-content-end">
         <a routerLink="/register" class="col-lg-1">
             <button type="button" class="btn btn-primary me-3">Register</button>
         </a>
         <a routerLink="/login" class="col-lg-1">
             <button type="button" class="btn btn-danger">Login</button>
+        </a>
+    </div>
+
+    <div *ngIf="this.authService.isLoggedIn()" class="container justify-content-end">
+        <a href="/publish" class="me-4 navbar-text">Create</a>
+
+        <a routerLink="/" class="col-lg-1">
+            <img class="col-lg-1"
+                src="https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1512936020165x278911292087286720%2FA.png?w=&h=&auto=compress&dpr=1&fit=max">
         </a>
     </div>
 </nav>
