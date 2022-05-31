@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken');
 const config = require('../config/auth.config.js');
 const db = require('../models');
-const User = db.user;
 
 verifyToken = (req, res, next) => {
     let token = req.headers['x-access-token'];
     if(!token) {
         return res.status(403).send({
+            error_code: 'AUTH001',
             message: 'Forbidden: JWT Token not provided.'
         });
     }
@@ -14,9 +14,11 @@ verifyToken = (req, res, next) => {
     jwt.verify(token, config.secret, (err, decoded) => {
         if(err) {
             return res.status(401).send({
+                error_code: 'AUTH002',
                 message: 'Unauthorized Access: Invalid Token'
             });
         }
+        
         req.userId = decoded.id;
         next();
     });

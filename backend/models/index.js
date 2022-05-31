@@ -18,4 +18,10 @@ db.sequelize = sequelize;
 db.articles = require('./article.model.js')(sequelize, Sequelize);
 db.user = require('./user.model.js')(sequelize, Sequelize);
 
+db.user.hasMany(db.articles, { as: 'articles' });
+db.articles.belongsTo(db.user, {
+    foreignKey: 'userId',
+    as: "user"
+});
+
 module.exports = db;

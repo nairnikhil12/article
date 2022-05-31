@@ -16,7 +16,10 @@ exports.register = (req, res) => {
             res.send({ message: "User registered successfully"});
         })
         .catch(err => {
-            res.status(500).send({ message: err.message });
+            res.status(500).send({ 
+                error_code: 'AUTH003',
+                message: err.message
+             });
         });
 };
 
@@ -28,7 +31,10 @@ exports.login = (req, res) => {
     })
     .then(user => {
         if(!user) {
-            return res.status(404).send({ message: 'User Not Found' });
+            return res.status(404).send({ 
+                error_code: 'AUTH004',
+                message: 'User Not Found' 
+            });
         }
 
         let passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
@@ -36,6 +42,7 @@ exports.login = (req, res) => {
         if(!passwordIsValid) {
             return res.status(401).send({
                 accessToken: null,
+                error_code: 'AUTH005',
                 message: 'Invalid Password!'
             })
         }
@@ -49,6 +56,9 @@ exports.login = (req, res) => {
         });
     })
     .catch(err => {
-        res.status(500).send({ message: err.message });
+        res.status(500).send({ 
+            error_code: 'AUTH006',
+            message: err.message 
+        });
     });
 };

@@ -15,6 +15,14 @@ app.use(express.urlencoded({ extended: true }));
 const db = require('./models');
 db.sequelize.sync({ force: true }).then(() => {
     console.log('Drop and re-sync db.');
+
+    user = {
+        firstname: 'Nikhil',
+        lastname: 'Nair',
+        username: 'abc',
+        password: '$2a$08$Y8UU3plqZ8eIMbjRF0wd9.xCadKUx3rRzkJf/h6F3yeQHWE5qeNiC'
+    }
+    db.user.create(user);
 });
 
 require('./routes/auth.route')(app);
