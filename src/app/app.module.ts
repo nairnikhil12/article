@@ -16,6 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ArticleService } from './services/article.service';
 import { RegisterService } from './services/register.service';
 import { AuthService } from './services/auth.service';
+import { ViewArticleComponent } from './components/view-article/view-article.component';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { AuthService } from './services/auth.service';
         CreateArticleComponent,
         HeaderComponent,
         RegisterComponent,
-        LoginComponent
+        LoginComponent,
+        ViewArticleComponent
     ],
     imports: [
         BrowserModule,

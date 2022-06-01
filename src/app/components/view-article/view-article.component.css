@@ -1,0 +1,8 @@
+::ng-deep .angular-editor-textarea {
+    outline: 0 !important;
+}
+
+angular-editor {
+    border: none;
+    outline: none;
+}

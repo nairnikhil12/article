@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Article } from '../models/article';
+import { Article, ArticlePublish } from '../models/article';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable({
     providedIn: 'root'
@@ -9,11 +10,32 @@ import { Observable } from 'rxjs';
 export class ArticleService {
     baseURI: string = 'http://127.0.0.1:8081/api/v1';
 
-    constructor(private http: HttpClient) { }
+    constructor(
+        private http: HttpClient,
+        private authService: AuthService
+    ) { }
 
-    publishArticle(article: Article): Observable<any> {
-        let uri = `${this.baseURI}/article/`;
+    publishArticle(article: ArticlePublish): Observable<any> {
+        const uri: string = `${this.baseURI}/article`;
 
-        return this.http.post(uri, article);
+        const options = {
+            headers: {
+                'x-access-token': this.authService.getSession()
+            }
+        }
+
+        return this.http.post(uri, article, options);
+    }
+
+    retrieveArticleById(id: string): Observable<Article> {
+        const uri: string = `${this.baseURI}/article/id/${id}`;
+
+        return this.http.get<Article>(uri);
+    }
+
+    retrieveAllArticles(): Observable<Article[]> {
+        const uri: string = `${this.baseURI}/article/all`;
+
+        return this.http.get<Article[]>(uri);
     }
 }

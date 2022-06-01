@@ -32,7 +32,7 @@ exports.create = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                error_code: 'ARTICLE003',
+                error_code: 'DB001',
                 message: err.message || "Database Error."
             });
         });
@@ -41,7 +41,7 @@ exports.create = (req, res) => {
 exports.findByArticleId = (req, res) => {
     if(!req.params.id) {
         res.status(400).send({
-            error_code: 'ARTICLE004',
+            error_code: 'ARTICLE003',
             message: 'Article ID not given.'
         });
     }
@@ -53,14 +53,61 @@ exports.findByArticleId = (req, res) => {
             }
             else {
                 res.status(404).send({
-                    error_code: 'ARTICLE005',
+                    error_code: 'ARTICLE004',
                     message: 'Cannot find article with given ID.'
                 });
             }
+        })
+        .catch(err => {
+            res.status(500).send({
+                error_code: 'DB001',
+                message: err.message || 'Database Error.'
+            });
         });
 };
 
 exports.findAllArticlesByUserId = (req, res) => {
+    const userId = req.userId;
 
+    Article.findAll({
+        where: { 'userId': userId }
+    })
+    .then(data => {
+        if(data)
+            res.status(200).send(data);
+        else {
+            res.status(404).send({
+                error_code: 'ARTICLE004',
+                message: 'Some error occured.'
+            })
+        }
+    })
+    .catch(err => {
+        res.status(500).send({
+            error_code: 'DB001',
+            message: err.message || 'Database Error.'
+        });
+    });
+};
+
+exports.findAllArticles = (req, res) => {
+    console.log("SDF");
+    Article.findAll()
+        .then(data => {
+            if(data)
+                res.status(200).send(data);
+            else {
+                res.status(404).send({
+                    error_code: 'ARTICLE004',
+                    message: 'Some error occured.'
+                })
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                error_code: 'DB001',
+                message: err.message || 'Database Error.'
+            });
+        })
 };
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { Article } from 'src/app/models/article';
+import { ArticlePublish } from 'src/app/models/article';
 import { ArticleService } from 'src/app/services/article.service';
 
 @Component({
@@ -36,7 +36,7 @@ export class CreateArticleComponent implements OnInit {
     ) { }
 
     onPublish(): void {
-        const article: Article = {
+        const article: ArticlePublish = {
             title: this.title,
             content: this.htmlContent
         };
