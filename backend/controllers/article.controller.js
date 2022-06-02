@@ -91,7 +91,6 @@ exports.findAllArticlesByUserId = (req, res) => {
 };
 
 exports.findAllArticles = (req, res) => {
-    console.log("SDF");
     Article.findAll()
         .then(data => {
             if(data)

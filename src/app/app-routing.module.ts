@@ -7,10 +7,16 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ViewArticleComponent } from './components/view-article/view-article.component';
 
+import { AuthGuardService } from './services/auth-guard.service';
+
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: '/home' },
     { path: 'home', component: HomeComponent },
-    { path: 'publish', component: CreateArticleComponent },
+    {
+        path: 'publish',
+        component: CreateArticleComponent,
+        canActivate: [AuthGuardService]
+    },
     { path: 'register', component: RegisterComponent },
     { path: 'login', component: LoginComponent },
     { path: 'article/:id', component: ViewArticleComponent }

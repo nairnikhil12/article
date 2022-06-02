@@ -12,11 +12,12 @@ import { CreateArticleComponent } from './components/create-article/create-artic
 import { HeaderComponent } from './components/header/header.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+import { ViewArticleComponent } from './components/view-article/view-article.component';
 
 import { ArticleService } from './services/article.service';
 import { RegisterService } from './services/register.service';
 import { AuthService } from './services/auth.service';
-import { ViewArticleComponent } from './components/view-article/view-article.component';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @NgModule({
     declarations: [
@@ -33,12 +34,13 @@ import { ViewArticleComponent } from './components/view-article/view-article.com
         AppRoutingModule,
         AngularEditorModule,
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
     ],
     providers: [
         ArticleService,
         RegisterService,
-        AuthService
+        AuthService,
+        JwtHelperService
     ],
     bootstrap: [AppComponent]
 })
