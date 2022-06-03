@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserRegister } from '../models/user';
+import { AppSettings } from '../config/app-settings';
 
 @Injectable({
     providedIn: 'root'
 })
 export class RegisterService {
-    baseURI: string = 'http://127.0.0.1:8081/api/v1';
+    baseURI: string = AppSettings.API_ENDPOINT;
 
     constructor(private http: HttpClient) { }
 
