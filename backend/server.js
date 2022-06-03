@@ -1,16 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 
 let corsOptions = {
-    origin: 'http://localhost:8081'
+    origin: 'http://localhost:8081',
+    optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static('dist/article'));
 
 const db = require('./models');
 db.sequelize.sync({ force: true }).then(() => {
@@ -53,6 +58,11 @@ require('./routes/auth.route')(app);
 require('./routes/article.route')(app);
 
 const PORT = process.env.port || 8081;
+
+// app.get('*', function(req, res) {
+//     res.sendFile(path.join(__dirname, '/dist/article/index.html'));
+// });
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
