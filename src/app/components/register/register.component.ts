@@ -14,6 +14,8 @@ export class RegisterComponent implements OnInit {
     username: string = '';
     password: string = '';
 
+    errorMessages: any = {};
+
     constructor(
         private registerService: RegisterService,
         private router: Router
@@ -30,9 +32,33 @@ export class RegisterComponent implements OnInit {
             password: this.password
         }
 
-        this.registerService.registerUser(user).subscribe(data => {
-            console.log(data);
-            this.router.navigate(['/home']);
+        this.registerService.registerUser(user).subscribe({
+            next: (data) => {
+                console.log(data);
+                this.router.navigate(['/login']);
+            },
+            error: (err) => {
+                console.log(err);
+
+                const code = err.error.error_code;
+                const message = err.error.message;
+
+                if (code === 'REGISTER001') {
+                    this.errorMessages = { 'firstname': message };
+                }
+                else if (code === 'REGISTER002') {
+                    this.errorMessages = { 'lastname': message };
+                }
+                else if (code === 'REGISTER003' || code === 'REGISTER006') {
+                    this.errorMessages = { 'username': message };
+                }
+                else if (code === 'REGISTER004') {
+                    this.errorMessages = { 'password': message };
+                }
+                else {
+                    this.errorMessages = { 'password': message };
+                }
+            }
         });
     }
 }

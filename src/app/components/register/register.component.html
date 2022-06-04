@@ -1,27 +1,55 @@
-<div class="mt-5 p-4 container border border-3 rounded-3 box">
+<form class="mt-5 mb-5 p-4 container border border-3 rounded-3 box needs-validation" novalidate>
     <div class="mb-3">
         <h1 class="d-flex text-success">REGISTER</h1>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3 has-validation">
         <label class="form-label">First Name</label>
-        <input [(ngModel)]="firstname" placeholder="First Name" type="text" class="form-control">
+        <input [(ngModel)]="firstname" placeholder="First Name" type="text" class="form-control" name="firstname"
+            id="validationServerFirstnameFeedback" [ngClass]="{
+                'is-invalid': errorMessages.hasOwnProperty('firstname') 
+            }">
+
+        <span id="validationServerFirstnameFeedback" class="invalid-feedback">
+            {{ errorMessages.firstname || '' }}
+        </span>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3 has-validation">
         <label class="form-label">Last Name</label>
-        <input [(ngModel)]="lastname" placeholder="Last Name" type="text" class="form-control">
+        <input [(ngModel)]="lastname" placeholder="Last Name" type="text" class="form-control" name="lastname"
+            id="validationServerLastnameFeedback" [ngClass]="{
+                'is-invalid': errorMessages.hasOwnProperty('lastname') 
+            }">
+
+        <span id="validationServerLastnameFeedback" class="invalid-feedback">
+            {{ errorMessages.lastname || '' }}
+        </span>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3 has-validation">
         <label class="form-label">Username</label>
-        <input [(ngModel)]="username" placeholder="Username" type="text" class="form-control">
+        <input [(ngModel)]="username" placeholder="Username" type="text" class="form-control" name="username"
+            id="validationServerUsernameFeedback" [ngClass]="{
+                'is-invalid': errorMessages.hasOwnProperty('username') 
+            }">
+
+        <span id="validationServerUsernameFeedback" class="invalid-feedback">
+            {{ errorMessages.username || '' }}
+        </span>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3 has-validation">
         <label class="form-label">Password</label>
-        <input [(ngModel)]="password" placeholder="Password" type="password" class="form-control">
+        <input [(ngModel)]="password" placeholder="Password" type="password" class="form-control" name="password"
+            id="validationServerpasswordFeedback" [ngClass]="{
+                'is-invalid': errorMessages.hasOwnProperty('password') 
+            }">
+
+        <span id="validationServerPasswordFeedback" class="invalid-feedback">
+            {{ errorMessages.password || '' }}
+        </span>
     </div>
 
     <button (click)="onRegister()" type="submit" class="mt-2 btn btn-primary">Register</button>
-</div>
+</form>

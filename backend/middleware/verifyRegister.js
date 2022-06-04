@@ -1,3 +1,4 @@
+const { ERROR_MESSAGE } = require('../error_messages/error');
 const db = require('../models');
 const User = db.user;
 
@@ -9,7 +10,8 @@ checkDuplicateUsername = (req, res, next) => {
     }).then(user => {
         if(user) {
             res.status(400).send({
-                message: 'Error: Username already exists.'
+                error_code: 'REGISTER006',
+                message: ERROR_MESSAGE['REGISTER006']
             });
             return ;
         }

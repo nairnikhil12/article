@@ -1,17 +1,31 @@
-<div class="mt-5 p-4 container border border-3 rounded-3 box">
+<form class="mt-5 mb-5 p-4 container border border-3 rounded-3 box">
     <div class="mb-3">
         <h1 class="d-flex text-success">LOGIN</h1>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3 has-validation">
         <label class="form-label">Username</label>
-        <input [(ngModel)]="username" placeholder="Username" type="text" class="form-control">
+        <input [(ngModel)]="username" placeholder="Username" type="text" class="form-control" name="username"
+            id="validationServerUsernameFeedback" [ngClass]="{
+                'is-invalid': !isUsernameValid
+            }">
+
+        <span id="validationServerUsernameFeedback" class="invalid-feedback">
+            {{ errorMessage.username || '' }}
+        </span>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3 has-validation">
         <label class="form-label">Password</label>
-        <input [(ngModel)]="password" placeholder="Password" type="password" class="form-control">
+        <input [(ngModel)]="password" placeholder="Password" type="password" id="validationServerPasswordFeedback"
+            name="password" class="form-control" [ngClass]="{
+                'is-invalid': !isPasswordValid
+            }">
+
+        <span id="validationServerPasswordFeedback" class="invalid-feedback">
+            {{ errorMessage.password || '' }}
+        </span>
     </div>
 
     <button (click)="onLogin()" type="submit" class="mt-2 btn btn-primary">Login</button>
-</div>
+</form>
