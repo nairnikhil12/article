@@ -18,13 +18,14 @@
                 <a routerLink="/register" class="p-2 nav-item active">
                     <button type="button" class="btn btn-primary ms-1">Register</button>
                 </a>
-                <a routerLink="/login" class="p-2 nav-item active">
+                <a routerLink="/login" class="me-4 p-2 nav-item active">
                     <button type="button" class="btn btn-danger">Login</button>
                 </a>
             </div>
 
             <div *ngIf="this.authService.isLoggedIn()" class="d-flex">
                 <a routerLink="/publish" class="flex-column mt-1 me-3 nav-link">Publish</a>
+                <button type="button" (click)="onLogout()" class="btn btn-danger me-3">Logout</button>
                 <a routerLink="/" class="flex-column me-3">
                     <img
                         src="https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1512936020165x278911292087286720%2FA.png?w=&h=&auto=compress&dpr=1&fit=max">
