@@ -13,6 +13,7 @@ import { ArticleService } from 'src/app/services/article.service';
 export class CreateArticleComponent implements OnInit {
 
     title: string = '';
+    subtitle: string = '';
     htmlContent: string = '';
 
     config: AngularEditorConfig = {
@@ -38,6 +39,7 @@ export class CreateArticleComponent implements OnInit {
     onPublish(): void {
         const article: ArticlePublish = {
             title: this.title,
+            subtitle: this.subtitle,
             content: this.htmlContent
         };
 

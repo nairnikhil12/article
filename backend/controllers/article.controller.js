@@ -11,6 +11,15 @@ exports.create = (req, res) => {
         return ;
     }
 
+    if(!req.body.subtitle) {
+        res.status(400).send({
+            error_code: 'ARTICLE001',
+            message: 'Subtitle can not be empty!'
+        });
+
+        return ;
+    }
+
     if(!req.body.content) {
         res.status(400).send({
             error_code: 'ARTICLE002',
@@ -22,6 +31,7 @@ exports.create = (req, res) => {
 
     const article = {
         title: req.body.title,
+        subtitle: req.body.subtitle,
         content: req.body.content,
         userId: req.userId
     }

@@ -28,20 +28,22 @@ db.sequelize.sync({ force: true }).then(() => {
     };
 
     user2 = {
-        firstname: 'Hell',
-        lastname: 'Girl',
+        firstname: 'ABC',
+        lastname: 'XYZ',
         username: 'xyz',
         password: ''
     };
 
     article1 = {
-        title: 'Anime',
-        content: 'Anime ABC XYZ',
+        title: 'Maker',
+        subtitle: 'ABC',
+        content: 'Game  XYZ',
         userId: '1'
     };
 
     article2 = {
         title: 'Game',
+        subtitle: 'XYZ',
         content: 'Game ABC XYZ',
         userId: '1'
     };

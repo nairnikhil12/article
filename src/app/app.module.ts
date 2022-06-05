@@ -18,6 +18,7 @@ import { ArticleService } from './services/article.service';
 import { RegisterService } from './services/register.service';
 import { AuthService } from './services/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { ArticleDisplayCardComponent } from './components/article-display-card/article-display-card.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
         HeaderComponent,
         RegisterComponent,
         LoginComponent,
-        ViewArticleComponent
+        ViewArticleComponent,
+        ArticleDisplayCardComponent
     ],
     imports: [
         BrowserModule,

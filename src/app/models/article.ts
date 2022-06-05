@@ -9,5 +9,6 @@ export class Article {
 
 export class ArticlePublish {
     title!: string;
+    subtitle!: string;
     content!: string;
 }

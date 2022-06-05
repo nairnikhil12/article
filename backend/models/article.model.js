@@ -3,6 +3,9 @@ module.exports = (sequelize, Sequelize) => {
         title: {
             type: Sequelize.TEXT
         },
+        subtitle: {
+            type: Sequelize.TEXT
+        },
         content: {
             type: Sequelize.TEXT
         }

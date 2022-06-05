@@ -1,7 +1,12 @@
 <div class="container mb-3">
     <div class="row input-group mb-3 ms-1">
-        <span class="col-sm-1 input-group-text">Title</span>
-        <input [(ngModel)]="title" type="col-sm-11 text" class="form-control">
+        <span class="col-sm-2 input-group-text">Title</span>
+        <input [(ngModel)]="title" type="col-sm-10 text" class="form-control">
+    </div>
+
+    <div class="row input-group mb-3 ms-1">
+        <span class="col-sm-2 input-group-text">Subtitle</span>
+        <input [(ngModel)]="subtitle" type="col-sm-10 text" class="form-control">
     </div>
 
     <angular-editor [(ngModel)]="htmlContent" [config]="config" class="row"></angular-editor>

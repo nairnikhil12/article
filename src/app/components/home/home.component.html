@@ -1,5 +1,7 @@
+<h2 class="ms-3 mb-4">TRENDING</h2>
+
 <ul class="list-group">
     <li *ngFor="let article of article_list" class="list-group-item">
-        <a href="/article/{{article.id}}"> {{ article.title }}</a>
+        <app-article-display-card [article]="article"></app-article-display-card>
     </li>
 </ul>
