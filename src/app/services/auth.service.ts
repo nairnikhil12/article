@@ -38,7 +38,13 @@ export class AuthService {
         if (!token)
             return false;
 
-        return !jwtHelper.isTokenExpired(token);
+        // Remove the token if it has expired
+        if (jwtHelper.isTokenExpired(token)) {
+            localStorage.removeItem('token');
+            return false;
+        }
+
+        return true;
     }
 
     isLoggedOut(): boolean {

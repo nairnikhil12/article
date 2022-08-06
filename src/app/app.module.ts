@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -19,6 +20,7 @@ import { RegisterService } from './services/register.service';
 import { AuthService } from './services/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ArticleDisplayCardComponent } from './components/article-display-card/article-display-card.component';
+
 
 @NgModule({
     declarations: [
@@ -37,6 +39,7 @@ import { ArticleDisplayCardComponent } from './components/article-display-card/a
         AngularEditorModule,
         FormsModule,
         HttpClientModule,
+        BrowserAnimationsModule,
     ],
     providers: [
         ArticleService,
