@@ -1,55 +1,56 @@
-<form class="mt-5 mb-5 p-4 container border border-3 rounded-3 box needs-validation" novalidate>
-    <div class="mb-3">
-        <h1 class="d-flex text-success">REGISTER</h1>
-    </div>
+<mat-card class="box">
+    <mat-card-title>Register</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="onRegister(form)" novalidate>
+            <div class="mb-3">
+                <mat-form-field>
+                    <mat-label>Firstname</mat-label>
+                    <input matInput formControlName="firstname" name="firstname">
 
-    <div class="mb-3 has-validation">
-        <label class="form-label">First Name</label>
-        <input [(ngModel)]="firstname" placeholder="First Name" type="text" class="form-control" name="firstname"
-            id="validationServerFirstnameFeedback" [ngClass]="{
-                'is-invalid': errorMessages.hasOwnProperty('firstname') 
-            }">
+                    <mat-error *ngIf="form.controls['firstname'].errors?.['required']">Firstname is required</mat-error>
+                    <mat-error *ngIf="form.controls['firstname'].errors?.['firstnameInvalid']">
+                        {{errorMessages.firstname}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
 
-        <span id="validationServerFirstnameFeedback" class="invalid-feedback">
-            {{ errorMessages.firstname || '' }}
-        </span>
-    </div>
+            <div class="mb-3">
+                <mat-form-field>
+                    <mat-label>Lastname</mat-label>
+                    <input matInput formControlName="lastname" name="lastname">
 
-    <div class="mb-3 has-validation">
-        <label class="form-label">Last Name</label>
-        <input [(ngModel)]="lastname" placeholder="Last Name" type="text" class="form-control" name="lastname"
-            id="validationServerLastnameFeedback" [ngClass]="{
-                'is-invalid': errorMessages.hasOwnProperty('lastname') 
-            }">
+                    <mat-error *ngIf="form.controls['lastname'].errors?.['required']">Lastname is required</mat-error>
+                    <mat-error *ngIf="form.controls['lastname'].errors?.['lastnameInvalid']">
+                        {{errorMessages.lastname}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
 
-        <span id="validationServerLastnameFeedback" class="invalid-feedback">
-            {{ errorMessages.lastname || '' }}
-        </span>
-    </div>
+            <div class="mb-3">
+                <mat-form-field>
+                    <mat-label>Username</mat-label>
+                    <input matInput formControlName="username" name="username">
 
-    <div class="mb-3 has-validation">
-        <label class="form-label">Username</label>
-        <input [(ngModel)]="username" placeholder="Username" type="text" class="form-control" name="username"
-            id="validationServerUsernameFeedback" [ngClass]="{
-                'is-invalid': errorMessages.hasOwnProperty('username') 
-            }">
+                    <mat-error *ngIf="form.controls['username'].errors?.['required']">Username is required</mat-error>
+                    <mat-error *ngIf="form.controls['username'].errors?.['usernameInvalid']">
+                        {{errorMessages.username}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
 
-        <span id="validationServerUsernameFeedback" class="invalid-feedback">
-            {{ errorMessages.username || '' }}
-        </span>
-    </div>
+            <div class="mb-3 has-validation">
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" type="password" name="password">
 
-    <div class="mb-3 has-validation">
-        <label class="form-label">Password</label>
-        <input [(ngModel)]="password" placeholder="Password" type="password" class="form-control" name="password"
-            id="validationServerpasswordFeedback" [ngClass]="{
-                'is-invalid': errorMessages.hasOwnProperty('password') 
-            }">
+                    <mat-error *ngIf="form.controls['password'].errors?.['required']">Password is required</mat-error>
+                    <mat-error *ngIf="form.controls['password'].errors?.['passwordInvalid']">
+                        {{errorMessages.password}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
 
-        <span id="validationServerPasswordFeedback" class="invalid-feedback">
-            {{ errorMessages.password || '' }}
-        </span>
-    </div>
-
-    <button (click)="onRegister()" type="submit" class="mt-2 btn btn-primary">Register</button>
-</form>
+            <button mat-raised-button color="primary" [disabled]="!form.valid" type="submit">Register</button>
+        </form>
+    </mat-card-content>
+</mat-card>

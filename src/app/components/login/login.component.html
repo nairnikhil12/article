@@ -1,31 +1,31 @@
-<form class="mt-5 mb-5 p-4 container border border-3 rounded-3 box">
-    <div class="mb-3">
-        <h1 class="d-flex text-success">LOGIN</h1>
-    </div>
+<mat-card class="box">
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="onLogin(form)">
+            <div class="mb-3">
+                <mat-form-field>
+                    <mat-label>Username</mat-label>
+                    <input matInput formControlName="username" name="username" class="text-field">
 
-    <div class="mb-3 has-validation">
-        <label class="form-label">Username</label>
-        <input [(ngModel)]="username" placeholder="Username" type="text" class="form-control" name="username"
-            id="validationServerUsernameFeedback" [ngClass]="{
-                'is-invalid': !isUsernameValid
-            }">
+                    <mat-error *ngIf="form.controls['username'].errors?.['required']">Email is required</mat-error>
+                    <mat-error *ngIf="form.controls['username'].errors?.['usernameInvalid']">{{errorMessage.username}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
 
-        <span id="validationServerUsernameFeedback" class="invalid-feedback">
-            {{ errorMessage.username || '' }}
-        </span>
-    </div>
+            <div class="mb-3">
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" type="password" name="password" class="text-field">
 
-    <div class="mb-3 has-validation">
-        <label class="form-label">Password</label>
-        <input [(ngModel)]="password" placeholder="Password" type="password" id="validationServerPasswordFeedback"
-            name="password" class="form-control" [ngClass]="{
-                'is-invalid': !isPasswordValid
-            }">
+                    <mat-error *ngIf="form.controls['password'].errors?.['required']">Password is required</mat-error>
+                    <mat-error *ngIf="form.controls['password'].errors?.['passwordInvalid']">
+                        {{errorMessage.password}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
 
-        <span id="validationServerPasswordFeedback" class="invalid-feedback">
-            {{ errorMessage.password || '' }}
-        </span>
-    </div>
-
-    <button (click)="onLogin()" type="submit" class="mt-2 btn btn-primary">Login</button>
-</form>
+            <button mat-raised-button color="primary" [disabled]="!form.valid" type="submit">Sign in</button>
+        </form>
+    </mat-card-content>
+</mat-card>
